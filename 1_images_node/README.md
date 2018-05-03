@@ -33,6 +33,8 @@ To make our lives as developers easy, we use two libraries, which are specified 
 They must be installed with npm, the node package manager, before we can run the application.
 On our computer, we would call `npm install` to install these dependencies, then `node app.js` to start the app.
 
+All assets are in the folder `app/static/` and it is a pretty standard bootstrap template for a singe page website.
+
 To dockerize the app, we must do these things inside the Dockerfile.
 A simple Dockerfile looks like so:
 ```

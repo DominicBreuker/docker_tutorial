@@ -33,10 +33,12 @@ func main() {
 
 You would compile this code with `go build -o out` to build a binary called `out`, then run it with `./out`.
 Obviously, this requires Go installed.
+It also seeks for the website assets in the folder `static`, relative to the location of the binary.
+Make sure the assets in `app/static/` are in the correct place.
 
 We will now write a Dockerfile that builds such a binary in a full-fledged build environment, then throws away everything to only keep the binary and nothing else.
 To really build minimal size containers, we use some Golang tricks.
-With `CGO_ENABLED=0` we make sure Go uses it's native implementation of libc, not the one installed on the system.
+With `CGO_ENABLED=0` we make sure Go uses it's native implementation only and does not interact with C libraries in any way.
 Using `go build -o app-bin -a -ldflags '-extldflags "-static"'` we get a binary that is statically compiled, i.e., one that does not require any libraries.
 Together, the two settings ensure we have no OS dependencies at all beyond the Kernel, so we can use an empty container:
 
