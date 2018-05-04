@@ -37,7 +37,7 @@ All assets are in the folder `app/static/` and it is a pretty standard bootstrap
 
 To dockerize the app, we must do these things inside the Dockerfile.
 A simple Dockerfile looks like so:
-```docker
+```dockerfile
 FROM node:9-alpine
 
 RUN apk add --no-cache curl

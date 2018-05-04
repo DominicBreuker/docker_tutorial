@@ -47,7 +47,7 @@ Note that we respond to each request by getting the hit count from Redis and inc
 We let the application know where Redis is by fetching it's location from an environment variable.
 
 We also need a Dockerfile for this application:
-```docker
+```dockerfile
 FROM python:3.6-alpine
 COPY . /code
 WORKDIR /code
@@ -60,7 +60,7 @@ These are installed with pip, a Python package management tool.
 Afterwards, we define how to start the app and are done.
 
 Now we define the docker-compose.yml file.
-```docker-compose
+```yml
 version: '3'
 
 services:
