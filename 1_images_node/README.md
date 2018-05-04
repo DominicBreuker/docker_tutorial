@@ -8,7 +8,7 @@ As an example, we build a simple image that contains a static website.
 The website is built as a node.js application serving a set of static HTML, JS and CSS assets.
 Check out `app/app.js` to see how it works, which contains this code:
 
-```
+```node
 var http = require('http');
 
 var finalhandler = require('finalhandler');
@@ -37,7 +37,7 @@ All assets are in the folder `app/static/` and it is a pretty standard bootstrap
 
 To dockerize the app, we must do these things inside the Dockerfile.
 A simple Dockerfile looks like so:
-```
+```docker
 FROM node:9-alpine
 
 RUN apk add --no-cache curl
@@ -70,7 +70,7 @@ Once that is done, we have a new image with tag `local/website:v1.0` available.
 Run `docker image ls` to verify it is there.
 Note how we use a version other than latest to build the image.
 
-The next thing to do is run `docker run -it --rm -p 8000:8000 website:v1.0` to start our new container.
+The next thing to do is run `docker run -it --rm -p 8000:8000 local/website:v1.0` to start our new container.
 Visit `localhost:8000` afterwards to verify the website is actually served.
 
 

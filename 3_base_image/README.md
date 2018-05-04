@@ -2,7 +2,7 @@
 
 It is as simple as copying the file system to an empty container.
 Check out the Dockerfile:
-```
+```docker
 FROM scratch
 ADD files/rootfs.tar.xz /
 CMD ["/bin/sh"]

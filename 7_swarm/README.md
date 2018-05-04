@@ -25,12 +25,12 @@ A swarm is for running services on top of it.
 You can do this locally with only a single node.
 It can be done as follows:
 - `docker swarm init --advertise-addr 127.0.0.1:2377 --listen-addr 127.0.0.1:2377`: start your swarm
-- `docker service create --name website -p 8000:8000 --replicas 2 website:v1.0`: run two instances of our website from an earlier example
+- `docker service create --name website -p 8000:8000 --replicas 2 local/website:v1.0`: run two instances of our website from an earlier example
 - `docker service ls`: show a list of all the services
 - `docker service ps website`: show some details for the website service
 - `docker service inspect --pretty website`: show even more details on the service configuration
 - `docker service scale website=3`: scale up the service to 3 instances
-- `docker service update website --image website:v2.0`: update the service to the 2nd version. Swarm will apply a rolling update, upadting service instances one after the other. During the deploy, get `localhost:8000` very often and you may see either the old or new version, depending on which service you hit.
+- `docker service update website --image local/website:v2.0`: update the service to the 2nd version. Swarm will apply a rolling update, upadting service instances one after the other. During the deploy, get `localhost:8000` very often and you may see either the old or new version, depending on which service you hit.
 - `docker service rm website`: delete the service
 
 ## Docker swarm secrets

@@ -14,7 +14,7 @@ This time we build a simple Golang application.
 It contains an upgraded website from the previous section.
 The Go code to serve the site looks as follows:
 
-```
+```go
 package main
 
 import (
@@ -42,7 +42,7 @@ With `CGO_ENABLED=0` we make sure Go uses it's native implementation only and do
 Using `go build -o app-bin -a -ldflags '-extldflags "-static"'` we get a binary that is statically compiled, i.e., one that does not require any libraries.
 Together, the two settings ensure we have no OS dependencies at all beyond the Kernel, so we can use an empty container:
 
-```
+```docker
 # build stage
 FROM golang:1.10-alpine3.7 AS build
 
@@ -67,12 +67,12 @@ We only copy the compiled binary itself + the website assets, no OS files though
 
 ## Build the image + run the container
 
-You can now build with `docker build -t website:v2.0 .`.
+You can now build with `docker build -t local/website:v2.0 .`.
 Again, the base image is downloaded.
 No other dependencies are required as we use the web server native to Go.
-Run with `docker run -it --rm -p 8000:8000 website:v2.0` and the site should be available in your web browser.
+Run with `docker run -it --rm -p 8000:8000 local/website:v2.0` and the site should be available in your web browser.
 
-
+Fun fact: try out `docker image history local/website:v2.0` and you see a summary of what Docker did to create the image.
 
 
 
