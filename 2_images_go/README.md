@@ -42,7 +42,7 @@ With `CGO_ENABLED=0` we make sure Go uses it's native implementation only and do
 Using `go build -o app-bin -a -ldflags '-extldflags "-static"'` we get a binary that is statically compiled, i.e., one that does not require any libraries.
 Together, the two settings ensure we have no OS dependencies at all beyond the Kernel, so we can use an empty container:
 
-```docker
+```dockerfile
 # build stage
 FROM golang:1.10-alpine3.7 AS build
 
